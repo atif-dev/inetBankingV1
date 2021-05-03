@@ -13,7 +13,7 @@ import com.inetbanking.utilities.XLUtils;
 public class TC_LoginDDT_002 extends BaseClass {
 
 	@Test(dataProvider="LoginData")
-	public void loginDDT (String user,String pwd) throws InterruptedException{
+	public void loginDDT (String user,String pwd) throws InterruptedException{//this method is taking values with the help of getData method wriiten below
 		LoginPage lp=new LoginPage(driver);
 		lp.setUserName(user);
 		logger.info("user name provided");
@@ -26,18 +26,19 @@ public class TC_LoginDDT_002 extends BaseClass {
 		if(isAlertPresent()==true)
 		{
 			driver.switchTo().alert().accept();//close alert
-			driver.switchTo().defaultContent();
-			Assert.assertTrue(false);
+			driver.switchTo().defaultContent();//focus on main page
+			Assert.assertTrue(false);//make test case false
 			logger.warn("Login failed");
+			logger.info("Login Failed");
 		}
 		else
 		{
-			Assert.assertTrue(true);
+			Assert.assertTrue(true);//test case is passed
 			logger.info("Login passed");
 			lp.clickLogout();
 			Thread.sleep(3000);
 			driver.switchTo().alert().accept();//close logout alert
-			driver.switchTo().defaultContent();
+			driver.switchTo().defaultContent();//focus on login page
 			
 		}
 			

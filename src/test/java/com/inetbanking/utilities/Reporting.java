@@ -40,7 +40,7 @@ public class Reporting extends TestListenerAdapter
 		extent.attachReporter(htmlReporter);
 		extent.setSystemInfo("Host name","localhost");
 		extent.setSystemInfo("Environemnt","QA");
-		extent.setSystemInfo("user","pavan");
+		extent.setSystemInfo("user","Atif");
 		
 		htmlReporter.config().setDocumentTitle("InetBanking Test Project"); // Tile of report
 		htmlReporter.config().setReportName("Functional Test Automation Report"); // name of the report
@@ -50,7 +50,7 @@ public class Reporting extends TestListenerAdapter
 	
 	public void onTestSuccess(ITestResult tr)
 	{
-		logger=extent.createTest(tr.getName()); // create new entry in th report
+		logger=extent.createTest(tr.getName()); // create new entry in the report
 		logger.log(Status.PASS,MarkupHelper.createLabel(tr.getName(),ExtentColor.GREEN)); // send the passed information to the report with GREEN color highlighted
 	}
 	

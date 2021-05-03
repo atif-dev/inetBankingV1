@@ -10,10 +10,13 @@ import com.inetbanking.pageObjects.LoginPage;
 
 public class TC_AddCustomerTest_003 extends BaseClass
 {
+	
+	
 
 	@Test
 	public void addNewCustomer() throws InterruptedException, IOException
 	{
+		
 		LoginPage lp=new LoginPage(driver);
 		lp.setUserName(username);
 		logger.info("User name is provided");
@@ -49,10 +52,13 @@ public class TC_AddCustomerTest_003 extends BaseClass
 		
 		logger.info("validation started....");
 		
+		
 		boolean res=driver.getPageSource().contains("Customer Registered Successfully!!!");
 		
 		if(res==true)
 		{
+			
+			
 			Assert.assertTrue(true);
 			logger.info("test case passed....");
 			

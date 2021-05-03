@@ -11,7 +11,7 @@ public class AddCustomerPage {
 
 	WebDriver ldriver;
 	
-	public AddCustomerPage(WebDriver rdriver) {
+	public AddCustomerPage(WebDriver rdriver) {//this is constructor
 		ldriver=rdriver;
 		PageFactory.initElements(rdriver, this);
 	}
@@ -63,6 +63,10 @@ public class AddCustomerPage {
 	@CacheLookup
 	@FindBy(how = How.NAME, using = "sub")
 	WebElement btnSubmit;
+	
+	@FindBy(how = How.XPATH, using ="//*[@id=\"customer\"]/tbody/tr[4]/td[2]")
+	@CacheLookup
+	WebElement custId;
 	
 	public void clickAddNewCustomer() {
 		lnkAddNewCustomer.click();
@@ -116,6 +120,10 @@ public class AddCustomerPage {
 	public void custsubmit() {
 		btnSubmit.click();
 	}
+	
+	/*
+	 * public String saveCustId() { return custId.getText(); }
+	 */
 	
 	
 	

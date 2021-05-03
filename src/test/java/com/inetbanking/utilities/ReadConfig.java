@@ -39,12 +39,12 @@ public class ReadConfig {
 	return password;
 	}
 	
-	public String getChromePath()
-	{
-	String chromepath=pro.getProperty("chromepath");
-	return chromepath;
-	}
 	
+	  public String getChromePath() { 
+		  String chromepath=pro.getProperty("chromepath"); 
+		  return chromepath; 
+		  }
+	  
 	public String getIEPath()
 	{
 	String iepath=pro.getProperty("iepath");
@@ -55,6 +55,12 @@ public class ReadConfig {
 	{
 	String firefoxpath=pro.getProperty("firefoxpath");
 	return firefoxpath;
+	}
+	
+	public String getEdgePath()
+	{
+	String edgepath=pro.getProperty("edgepath");
+	return edgepath;
 	}
 
 }

@@ -1,15 +1,13 @@
 package com.inetbanking.testCases;
 
-import org.testng.annotations.Test;
-
 import java.io.IOException;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.NoAlertPresentException;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.inetbanking.pageObjects.LoginPage;
+
 
 
 
@@ -17,7 +15,7 @@ public class TC_LoginTest_001 extends BaseClass
 {
 
 	@Test
-	public void loginTest() throws IOException
+	public void loginTest() throws InterruptedException, IOException
 	{
 		
 		
@@ -34,20 +32,41 @@ public class TC_LoginTest_001 extends BaseClass
 		
 		lp.clickSubmit();
 		
+		Thread.sleep(1000);
 		
+		if(isAlertPresent() == true) {
+			
+			String alertMsg = driver.switchTo().alert().getText();
+			logger.info("Exception Message: " + alertMsg);
+			Thread.sleep(2000);
+			
+			driver.switchTo().alert().accept();//close alert
+			Thread.sleep(2000);
+			
+			
+			captureScreen(driver, "loginTest");
+			Assert.assertTrue(false);
+		}else if(driver.getTitle().equals("Guru99 Bank Manager HomePage")) {
+			
+				logger.info("Logged in");
+				logger.info("Login test passed");
+				Assert.assertTrue(true);
+			}
 		
-		  if(driver.getTitle().equals("Guru99 Bank Manager HomePage")) {
-			  Assert.assertTrue(true);
-			  logger.info("Login test passed");
-		  }else {
-			  captureScreen(driver, "loginTest");
-			  Assert.assertTrue(false);
-			  logger.info("Login test failed");
-		  }
-		 
-			 
-		 
-		 
+	}
+	
+	public boolean isAlertPresent() //user defined method created to check alert is present or not
+	{
+		try
+		{
+		driver.switchTo().alert();
+		return true;
+		}
+		catch(NoAlertPresentException e)
+		{
+			return false;
+		}
+		
 	}
 	
 }
